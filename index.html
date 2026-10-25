@@ -1,10 +1,8 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
@@ -23,7 +21,6 @@
     </header>
 
     <main>
-
         <h1>
             Energy Consumption for different TV
             screen types and sizes
@@ -45,19 +42,32 @@
              class="responsive-svg-container">
         </div>
 
-        <!-- Optional screen size filters -->
+        <!-- Screen size filters -->
         <div id="filters_size"
              aria-label="Filter by TV screen size">
         </div>
 
         <p>
             Only TVs with energy consumption less
-            than 1,800 kWh per year have been included.
+            than 1,800 kWh per year have been
+            included in the histogram.
         </p>
+
+        <!-- Scatterplot introduction -->
+        <p class="scatter-intro">
+            TVs with the same star rating can have
+            very different energy consumption.
+            It depends on screen size and
+            technology type.
+        </p>
+
+        <!-- New Scatterplot -->
+        <div id="scatterplot"
+             class="responsive-svg-container">
+        </div>
 
         <!-- Data source -->
         <div class="body">
-
             <h3>Data source</h3>
 
             <p>
@@ -67,12 +77,9 @@
                     Energy Rating Data for household
                     appliances – Televisions
                 </a>
-
                 <br>
-
                 Downloaded Jan 2025
             </p>
-
         </div>
 
     </main>
@@ -84,12 +91,13 @@
         </p>
     </footer>
 
-    <!-- D3.js -->
+    <!-- D3.js library -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <!-- JavaScript files -->
     <script src="js/shared-constants.js"></script>
     <script src="js/histogram.js"></script>
+    <script src="js/scatterplot.js"></script>
     <script src="js/interactions.js"></script>
     <script src="js/load-data.js"></script>
 

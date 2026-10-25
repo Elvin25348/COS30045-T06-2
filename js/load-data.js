@@ -1,57 +1,87 @@
 
-/* Load the CSV file with a row conversion function */
+/* =====================================
+   Load TV Dataset
+===================================== */
 
 d3.csv("data/Ex6_TVdata.csv", d => ({
 
     brand: d.brand,
     model: d.model,
 
-    // Convert to number
     screenSize: +d.screenSize,
 
     screenTech: d.screenTech.trim(),
 
-    // Convert to number
     energyConsumption: +d.energyConsumption,
 
-    // Convert to number
     star: +d.star
 
 })).then(data => {
 
-    // Check that the data has loaded
-    console.log("Loaded records:", data.length);
-    console.log("Sample records:", data.slice(0, 5));
+    /* Check CSV Data */
 
-    // Include only TVs with energy consumption
-    // between 0 and 1800 kWh/year (excluding 1800)
-    const chartData = data.filter(d =>
-        Number.isFinite(d.energyConsumption) &&
-        d.energyConsumption >= 0 &&
-        d.energyConsumption < energyMax
-    );
+    console.log("Loaded records:", data.length);
 
     console.log(
-        "Records within chart range:",
-        chartData.length
+        "Sample records:",
+        data.slice(0, 5)
     );
 
-    // Draw initial histogram
-    drawHistogram(chartData);
 
-    // Create interactive filter buttons
-    populateFilters(chartData);
+    /* =====================================
+       Histogram Data
+    ===================================== */
+
+    // Histogram only includes TVs below 1800
+    const histogramData = data.filter(d =>
+
+        Number.isFinite(d.energyConsumption) &&
+
+        d.energyConsumption >= 0 &&
+
+        d.energyConsumption < energyMax
+
+    );
+
+
+    /* Draw Original Histogram */
+
+    drawHistogram(histogramData);
+
+
+    /* Create Technology and Size Filters */
+
+    populateFilters(histogramData);
+
+
+    /* =====================================
+       Draw Scatterplot
+    ===================================== */
+
+    // Scatterplot uses full valid dataset
+    drawScatterplot(data);
+
+
+    /* Create Tooltip */
+
+    createTooltip();
+
+
+    /* Attach Mouse Events */
+
+    handleMouseEvents();
+
 
 }).catch(error => {
 
     console.error(
-        "Error loading the CSV file:",
+        "Error loading TV data:",
         error
     );
 
     d3.select("#histogram").text(
         "Unable to load TV data. " +
-        "Please run this page using VS Code Live Server."
+        "Please use VS Code Live Server."
     );
 
 });

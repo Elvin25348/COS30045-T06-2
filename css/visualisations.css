@@ -1,12 +1,17 @@
 
-/* Responsive container of the SVG element */
+/* =====================================
+   Responsive SVG Container
+===================================== */
+
 .responsive-svg-container {
     width: 100%;
     max-width: 1000px;
     margin: 20px auto;
 }
 
+
 /* Responsive SVG */
+
 .responsive-svg-container svg {
     display: block;
     width: 100%;
@@ -14,35 +19,82 @@
     background-color: #fffaf0;
 }
 
-/* Axis labels */
+
+/* =====================================
+   Axis Labels
+===================================== */
+
 .axis-label {
     font-family: Arial, sans-serif;
     font-size: 16px;
     fill: #5a3e2b;
 }
 
-/* Axis tick text */
+
+/* Axis Tick Text */
+
 .axis text {
     font-family: Arial, sans-serif;
     font-size: 12px;
     fill: #5a3e2b;
 }
 
-/* Axis lines */
+
+/* Axis Lines */
+
 .axis path,
 .axis line {
     stroke: #5a3e2b;
 }
 
-/* Histogram bars */
+
+/* =====================================
+   Histogram Bars
+===================================== */
+
 .histogram-bar {
     fill: #606464;
 }
 
-/* Mobile chart adjustments */
+
+/* =====================================
+   Scatterplot Legend
+===================================== */
+
+.legend-label {
+    font-size: 15px;
+    fill: #5a3e2b;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =====================================
+   Scatterplot Tooltip
+===================================== */
+
+.tooltip-text {
+    fill: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* Scatterplot Introduction */
+
+.scatter-intro {
+    margin-top: 35px;
+}
+
+
+/* =====================================
+   Responsive Design
+===================================== */
+
 @media screen and (max-width: 596px) {
 
     .responsive-svg-container {
         margin-bottom: 20px;
     }
+
 }

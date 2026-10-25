@@ -1,5 +1,7 @@
 
-/* Step 5: Chart dimensions and margins */
+/* =====================================
+   Chart Dimensions and Margins
+===================================== */
 
 const margin = {
     top: 40,
@@ -18,26 +20,26 @@ const innerHeight =
     height - margin.top - margin.bottom;
 
 
-/* Chart colours */
+/* =====================================
+   Colours
+===================================== */
 
 const barColor = "#606464";
-
 const bodyBackgroundColor = "#fffaf0";
 
 
-/* D3 scales */
+/* =====================================
+   Histogram Scales
+===================================== */
 
 const xScale = d3.scaleLinear();
 const yScale = d3.scaleLinear();
-
-
-/* Energy consumption range */
 
 const energyMin = 0;
 const energyMax = 1800;
 
 
-/* Histogram bin generator */
+/* Histogram Bin Generator */
 
 const binGenerator = d3.bin()
     .value(d => d.energyConsumption)
@@ -45,7 +47,9 @@ const binGenerator = d3.bin()
     .thresholds(d3.range(200, energyMax, 200));
 
 
-/* Step 7.2: Screen technology filters */
+/* =====================================
+   Screen Technology Filters
+===================================== */
 
 const filters_screen = [
     { id: "all", label: "All", isActive: true },
@@ -55,7 +59,9 @@ const filters_screen = [
 ];
 
 
-/* Optional: Screen size filters */
+/* =====================================
+   Screen Size Filters
+===================================== */
 
 const filters_size = [
     { id: "all", label: "All Sizes", isActive: true },
@@ -65,3 +71,28 @@ const filters_size = [
     { id: 65, label: '65"', isActive: false },
     { id: 98, label: '98"', isActive: false }
 ];
+
+
+/* =====================================
+   Scatterplot Shared Constants
+===================================== */
+
+// Store the scatterplot inner chart
+let innerChartS;
+
+// Independent scatterplot X and Y scales
+const xScaleS = d3.scaleLinear();
+const yScaleS = d3.scaleLinear();
+
+// Colour coding by screen technology
+const colorScale = d3.scaleOrdinal()
+    .domain(["LED", "LCD", "OLED"])
+    .range(["#1f77b4", "#ff7f0e", "#2ca02c"]);
+
+
+/* =====================================
+   Tooltip Dimensions
+===================================== */
+
+const tooltipWidth = 205;
+const tooltipHeight = 76;
